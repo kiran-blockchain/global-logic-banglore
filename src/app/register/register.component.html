@@ -1,0 +1,102 @@
+<div class="container col-md-4 mt-5">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      [(ngModel)]="userDetails.email"
+    />
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="exampleInputPassword1"
+      [(ngModel)]="userDetails.password"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="fname">First Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="fname"
+      [(ngModel)]="userDetails.firstName"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="lname">Last Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="lname"
+      [(ngModel)]="userDetails.lastName"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input
+      type="text"
+      class="form-control"
+      id="age"
+      [(ngModel)]="-userDetails.age"
+    />
+  </div>
+  <div class="form-group">
+    <label for="country">Country</label>
+    <select class="form-control" [(ngModel)]="userDetails.country" id="country">
+      <option value="">Select Country</option>
+      <option value ={{c.alpha2Code}} 
+      *ngFor="let c of countryList">
+      {{c.name}}</option>
+    </select>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="gender"
+      id="male"
+      value="M"
+      [(ngModel)]="userDetails.gender"
+    />
+    <label class="form-check-label" for="male">Male</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="gender"
+      id="female"
+      value="F"
+      [(ngModel)]="userDetails.gender"
+    />
+    <label class="form-check-label" for="female">Female</label>
+  </div>
+
+  <div class="form-group form-check">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="exampleCheck1"
+      [(ngModel)]="userDetails.agreeTerms"
+    />
+    <label class="form-check-label" for="exampleCheck1">Agree Terms </label>
+  </div>
+  <button (click)="register()"
+  [disabled]='!userDetails.agreeTerms'
+  
+  class="btn btn-primary">Submit</button>
+</div>
+
+
+<div class="col-md-4">
+        <pre>{{userDetails|json}}</pre>
+    </div>
