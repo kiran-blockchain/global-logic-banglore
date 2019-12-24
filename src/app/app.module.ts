@@ -8,13 +8,15 @@ import { RegisterComponent } from './register/register.component';
 import { DataService } from './services/data.service';
 import { ProductsComponent } from './products/products.component';
 import { ProductService } from './services/product.service';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     RegisterComponent,
-    ProductsComponent
+    ProductsComponent,
+    SearchPipe
     
   ],
   imports: [

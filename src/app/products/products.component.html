@@ -3,9 +3,11 @@
         <th>S.No</th>
         <th>Product Name</th>
         <th>Price</th>
+        <th><input type="text" class="form-control" placeholder="Search By Name"
+             [(ngModel)]="searchCriteria"/></th>
     </thead>
     <tbody>
-        <tr *ngFor='let p of productList'>
+        <tr *ngFor="let p of productList|search:'price':searchCriteria">
             <td>{{p.id}}</td>
             <td>{{p.name}}</td>
             <td>{{p.price}}</td>
