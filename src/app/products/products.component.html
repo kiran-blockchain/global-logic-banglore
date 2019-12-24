@@ -9,8 +9,12 @@
             <td>{{p.id}}</td>
             <td>{{p.name}}</td>
             <td>{{p.price}}</td>
+            <td>{{p.shippingDate|date:'MM/dd/yyyy'}}</td>
             <td><button class="btn btn-primary" (click)="addToCart(p)">+</button></td>
             
         </tr>
     </tbody>
 </table>
+
+<pre>{{productList|json}}</pre>
+
