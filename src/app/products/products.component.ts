@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-products',
@@ -9,7 +10,9 @@ import { ProductService } from '../services/product.service';
 export class ProductsComponent implements OnInit {
   productList:any;
   constructor(private productSvc:ProductService) {
-
+    this.productSvc.myObserver().subscribe(result=>{
+      console.log(result);
+    })
    }
 
   ngOnInit() {
@@ -18,5 +21,6 @@ export class ProductsComponent implements OnInit {
   addToCart(item){
     this.productSvc.addToCart(item);
   }
+
 
 }
