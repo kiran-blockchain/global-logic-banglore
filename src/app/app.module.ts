@@ -1,39 +1,36 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-//Routing Step -1
-import {RouterModule} from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
+// Imports for loading & configuring the in-memory web api
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { ProductData } from './products/product-data';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './navarbar/navbar.component';
-import { RegisterComponent } from './register/register.component';
-import { DataService } from './services/data.service';
-import { ProductsComponent } from './products/products.component';
-import { ProductService } from './services/product.service';
-import { SearchPipe } from './pipes/search.pipe';
+import { WelcomeComponent } from './home/welcome.component';
+import { PageNotFoundComponent } from './page-not-found.component';
+
+/* Feature Modules */
+import { UserModule } from './user/user.module';
+import { MessageModule } from './messages/message.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavBarComponent,
-    RegisterComponent,
-    ProductsComponent,
-    SearchPipe
-    
-  ],
   imports: [
     BrowserModule,
-    FormsModule,//*including the forms module to the app
+    BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      {path:"register",component:RegisterComponent},
-      {path:"products",component:ProductsComponent},
-      { path: '', redirectTo: 'register', pathMatch: 'full' },
-    ])
+    InMemoryWebApiModule.forRoot(ProductData, { delay: 1000 }),
+    UserModule,
+    MessageModule,
+    AppRoutingModule
   ],
-  providers: [DataService,ProductService],
+  declarations: [
+    AppComponent,
+    WelcomeComponent,
+    PageNotFoundComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
