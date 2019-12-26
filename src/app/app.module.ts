@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+//Routing Step -1
+import {RouterModule} from '@angular/router';
+
+
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './navarbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
@@ -22,7 +26,12 @@ import { SearchPipe } from './pipes/search.pipe';
   imports: [
     BrowserModule,
     FormsModule,//*including the forms module to the app
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      {path:"register",component:RegisterComponent},
+      {path:"products",component:ProductsComponent},
+      { path: '', redirectTo: 'register', pathMatch: 'full' },
+    ])
   ],
   providers: [DataService,ProductService],
   bootstrap: [AppComponent]

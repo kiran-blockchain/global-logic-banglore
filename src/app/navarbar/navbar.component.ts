@@ -3,7 +3,7 @@ import { ProductService } from "../services/product.service";
 
 import { range } from "rxjs";
 import { map, filter } from "rxjs/operators";
-import { DataService } from '../services/data.service';
+import { DataService } from "../services/data.service";
 
 @Component({
   selector: "app-navbar",
@@ -13,19 +13,26 @@ export class NavBarComponent {
   title: String; //Declaration
   details: any;
   cart: any;
-  counter =0;
-  constructor(private productSvc: ProductService,private dataSvc:DataService) {
+  counter = 0;
+  constructor(
+    private productSvc: ProductService,
+    private dataSvc: DataService
+  ) {
     //Assignment
     this.title = "Global Loigc";
     this.details = {
       title: "Global Logic",
-      navItems: ["Home", "Products", "Cart"]
+      navItems: [
+        { name: "Home", link: "" },
+        {name:"Register",link:'/register'},
+        { name: "Products", link: "/products" },
+        { name: "Cart", link: "/cart" }
+      ]
     };
     this.cart = this.productSvc.cart;
     this.rxExample();
-    
-    this.productSvc.myObserver()
-    .subscribe(result=>{
+
+    this.productSvc.myObserver().subscribe(result => {
       console.log(result);
     });
   }
