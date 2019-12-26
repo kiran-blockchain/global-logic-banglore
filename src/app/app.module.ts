@@ -14,6 +14,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductService } from './services/product.service';
 import { SearchPipe } from './pipes/search.pipe';
 import { LoginComponent } from './login/login.component';
+import { DropdownComponent } from './dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginComponent } from './login/login.component';
     RegisterComponent,
     ProductsComponent,
     SearchPipe,
-    LoginComponent
+    LoginComponent,
+    DropdownComponent
     
   ],
   imports: [

@@ -65,14 +65,15 @@
   </div>
   <div class="form-group">
     <label for="country">Country</label>
-    <select class="form-control" [(ngModel)]="userDetails.country"
+    <app-dropdown [items]="newList" (dataChange)="handleCountryChange($event)"></app-dropdown>
+    <!-- <select class="form-control" [(ngModel)]="userDetails.country"
     name="country"
     id="country">
       <option value="">Select Country</option>
       <option value ={{c.alpha2Code}} 
       *ngFor="let c of countryList">
       {{c.name}}</option>
-    </select>
+    </select> -->
   </div>
 
   <div class="form-check form-check-inline">
