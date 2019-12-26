@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 //Routing Step -1
 import {RouterModule} from '@angular/router';
@@ -13,6 +13,7 @@ import { DataService } from './services/data.service';
 import { ProductsComponent } from './products/products.component';
 import { ProductService } from './services/product.service';
 import { SearchPipe } from './pipes/search.pipe';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,16 +21,19 @@ import { SearchPipe } from './pipes/search.pipe';
     NavBarComponent,
     RegisterComponent,
     ProductsComponent,
-    SearchPipe
+    SearchPipe,
+    LoginComponent
     
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     FormsModule,//*including the forms module to the app
     HttpClientModule,
     RouterModule.forRoot([
       {path:"register",component:RegisterComponent},
       {path:"products",component:ProductsComponent},
+      {path:"login",component:LoginComponent},
       { path: '', redirectTo: 'register', pathMatch: 'full' },
     ])
   ],

@@ -1,21 +1,32 @@
-<div class="container col-md-4 mt-5">
+<form class="container col-md-4 mt-5" #form="ngForm">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input
       type="email"
       class="form-control"
-      id="exampleInputEmail1"
-      aria-describedby="emailHelp"
+      id="emailAddress"
+      name="emailAddress"
+      required
+      minlength=5
+      #emailAddress ="ngModel"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
      [(ngModel)]="userDetails.email"
-      (keypress)="oninputChange($event)" 
     />
+    <!-- <div  class="alert alert-danger" *ngIf="!emailAddress.required && emailAddress.dirty">Email is required</div> -->
+    <div  class="alert alert-danger" *ngIf="emailAddress.errors?.pattern">Invalid Email</div>
+    <div  class="alert alert-danger" *ngIf="emailAddress.errors?.required">Email Required</div>
+    <div  class="alert alert-danger" *ngIf="emailAddress.errors?.minlength">Email minimum 5</div>
   </div>
+  
+  
+  
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
     <input
       type="password"
       class="form-control"
-      id="exampleInputPassword1"
+      id="password"
+      name="password"
       [(ngModel)]="userDetails.password"
     />
   </div>
@@ -26,6 +37,7 @@
       type="text"
       class="form-control"
       id="fname"
+      name="fname"
       [(ngModel)]="userDetails.firstName"
     />
   </div>
@@ -36,6 +48,7 @@
       type="text"
       class="form-control"
       id="lname"
+      name="lname"
       [(ngModel)]="userDetails.lastName"
     />
   </div>
@@ -46,12 +59,15 @@
       type="text"
       class="form-control"
       id="age"
+      name="age"
       [(ngModel)]="-userDetails.age"
     />
   </div>
   <div class="form-group">
     <label for="country">Country</label>
-    <select class="form-control" [(ngModel)]="userDetails.country" id="country">
+    <select class="form-control" [(ngModel)]="userDetails.country"
+    name="country"
+    id="country">
       <option value="">Select Country</option>
       <option value ={{c.alpha2Code}} 
       *ngFor="let c of countryList">
@@ -66,7 +82,7 @@
       name="gender"
       id="male"
       value="M"
-      [(ngModel)]="userDetails.gender"
+            [(ngModel)]="userDetails.gender"
     />
     <label class="form-check-label" for="male">Male</label>
   </div>
@@ -86,7 +102,8 @@
     <input
       type="checkbox"
       class="form-check-input"
-      id="exampleCheck1"
+      id="agreeTerms"
+      name="agreeTerms"
       [(ngModel)]="userDetails.agreeTerms"
     />
     <label class="form-check-label" for="exampleCheck1">Agree Terms </label>
@@ -95,7 +112,7 @@
   [disabled]='!userDetails.agreeTerms'
   
   class="btn btn-primary">Submit</button>
-</div>
+</form>
 
 
 <div class="col-md-4">

@@ -9,6 +9,7 @@ import { DataService } from "../services/data.service";
 export class RegisterComponent implements OnInit, OnChanges {
   userDetails: any;
   countryList: Array<any>;
+  emailExp =/^(([^<>()[]\.,;:s@"]+(.[^<>()[]\.,;:s@"]+)*)|( ".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/igm;
   constructor(private dataSvc: DataService) {
     this.userDetails = {
       email: "",
