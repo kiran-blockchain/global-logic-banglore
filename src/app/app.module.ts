@@ -15,6 +15,8 @@ import { ProductService } from './services/product.service';
 import { SearchPipe } from './pipes/search.pipe';
 import { LoginComponent } from './login/login.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { HoverDirective } from './hover.directive';
+import { RestrictDirective } from './restrict.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { DropdownComponent } from './dropdown/dropdown.component';
     ProductsComponent,
     SearchPipe,
     LoginComponent,
-    DropdownComponent
+    DropdownComponent,
+    HoverDirective,
+    RestrictDirective
     
   ],
   imports: [

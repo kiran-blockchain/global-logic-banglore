@@ -9,6 +9,7 @@ import { ThrowStmt } from '@angular/compiler';
 })
 export class ProductsComponent implements OnInit {
   productList:any;
+  searchCriteria:any;
   constructor(private productSvc:ProductService) {
     this.productSvc.myObserver().subscribe(result=>{
       console.log(result);
