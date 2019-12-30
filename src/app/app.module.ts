@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule,HttpClient} from '@angular/common/http';
 //Routing Step -1
 import {RouterModule} from '@angular/router';
 
@@ -17,6 +17,17 @@ import { LoginComponent } from './login/login.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { HoverDirective } from './hover.directive';
 import { RestrictDirective } from './restrict.directive';
+
+//i8N
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+   return new TranslateHttpLoader(http);
+}
+
 
 @NgModule({
   declarations: [
@@ -41,7 +52,14 @@ import { RestrictDirective } from './restrict.directive';
       {path:"products",component:ProductsComponent},
       {path:"login",component:LoginComponent},
       { path: '', redirectTo: 'register', pathMatch: 'full' },
-    ])
+    ]),
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
   ],
   providers: [DataService,ProductService],
   bootstrap: [AppComponent]
