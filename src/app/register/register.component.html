@@ -1,25 +1,31 @@
 <form class="container col-md-4 mt-5" #form="ngForm">
   <div class="form-group">
-    <label for="exampleInputEmail1">{{'EMAIL'|translate}}</label>
+    <label for="exampleInputEmail1">{{ "EMAIL" | translate }}</label>
     <input
       type="email"
       class="form-control"
       id="emailAddress"
       name="emailAddress"
       required
-      minlength=5
-      #emailAddress ="ngModel"
+      minlength="5"
+      #emailAddress="ngModel"
       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-     [(ngModel)]="userDetails.email"
+      [(ngModel)]="userDetails.email"
     />
     <!-- <div  class="alert alert-danger" *ngIf="!emailAddress.required && emailAddress.dirty">Email is required</div> -->
-    <div  class="alert alert-danger" *ngIf="emailAddress.errors?.pattern">Invalid Email</div>
-    <div  class="alert alert-danger" *ngIf="emailAddress.errors?.required">Email Required</div>
-    <div  class="alert alert-danger" *ngIf="emailAddress.errors?.minlength">Email minimum 5</div>
+    <div *ngIf="emailAddress.dirty">
+      <div class="alert alert-danger" *ngIf="emailAddress.errors?.pattern">
+        Invalid Email
+      </div>
+      <div class="alert alert-danger" *ngIf="emailAddress.errors?.required">
+        Email Required
+      </div>
+      <div class="alert alert-danger" *ngIf="emailAddress.errors?.minlength">
+        Email minimum 5
+      </div>
+    </div>
   </div>
-  
-  
-  
+
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
     <input
@@ -60,6 +66,7 @@
       class="form-control"
       id="age"
       name="age"
+      appDatepicker
       [(ngModel)]="-userDetails.age"
       pattern="^[0-9]*$"
       appRestrict
@@ -67,7 +74,10 @@
   </div>
   <div class="form-group">
     <label for="country">Country</label>
-    <app-dropdown  [items]="newList" (dataChange)="handleCountryChange($event)"></app-dropdown>
+    <app-dropdown
+      [items]="newList"
+      (dataChange)="handleCountryChange($event)"
+    ></app-dropdown>
     <!-- <select class="form-control" [(ngModel)]="userDetails.country"
     name="country"
     id="country">
@@ -85,7 +95,7 @@
       name="gender"
       id="male"
       value="M"
-            [(ngModel)]="userDetails.gender"
+      [(ngModel)]="userDetails.gender"
     />
     <label class="form-check-label" for="male">Male</label>
   </div>
@@ -111,11 +121,9 @@
     />
     <label class="form-check-label" for="exampleCheck1">Agree Terms </label>
   </div>
-  <button (click)="register()"
-  class="btn btn-primary" appHover >Submit</button>
+  <button (click)="register()" class="btn btn-primary" appHover>Submit</button>
 </form>
 
-
 <div class="col-md-4">
-        <pre>{{userDetails|json}}</pre>
-    </div>
+  <pre>{{ userDetails | json }}</pre>
+</div>

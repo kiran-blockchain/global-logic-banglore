@@ -17,6 +17,9 @@ export class HoverDirective implements OnInit {
    }
    @HostListener('mouseout', ['$event'])
    onmouseout(e){
-     this.el.nativeElement.style='color:""';
+     this.el.nativeElement.style='color:white';
    }
+   
+   
+
 }

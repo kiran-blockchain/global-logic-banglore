@@ -8,6 +8,7 @@ import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 export class DropdownComponent implements OnInit {
   @Input()
   items=[];
+  
   @Output()
   dataChange = new EventEmitter<any>();
 

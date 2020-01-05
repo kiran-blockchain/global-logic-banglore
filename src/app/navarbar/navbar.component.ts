@@ -29,11 +29,13 @@ export class NavBarComponent {
         { name: "Cart", link: "/cart" }
       ]
     };
-    this.cart = this.productSvc.cart;
+    //this.cart = this.productSvc.cart;
     this.rxExample();
+    this.cart =[];
 
     this.productSvc.myObserver().subscribe(result => {
       console.log(result);
+      this.cart.push(result);
     });
   }
   rxExample() {

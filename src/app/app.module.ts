@@ -21,6 +21,10 @@ import { RestrictDirective } from './restrict.directive';
 //i8N
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { FilterdataPipe } from './filterdata.pipe';
+import { Dropdown2Component } from './dropdown2/dropdown2.component';
+import { ChangecolorDirective } from './changecolor.directive';
+import { DatepickerDirective } from './datepicker.directive';
 
 
 // AoT requires an exported function for factories
@@ -39,7 +43,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     DropdownComponent,
     HoverDirective,
-    RestrictDirective
+    RestrictDirective,
+    FilterdataPipe,
+    Dropdown2Component,
+    ChangecolorDirective,
+    DatepickerDirective
     
   ],
   imports: [

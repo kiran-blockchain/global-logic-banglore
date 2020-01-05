@@ -5,14 +5,15 @@
         <th>Price</th>
         <th><input type="text" class="form-control" placeholder="Search By Name"
              [(ngModel)]="searchCriteria"/></th>
+             <th><app-dropdown2 items="productTypes"></app-dropdown2></th>
     </thead>
     <tbody>
-        <tr *ngFor="let p of productList|search:'price':searchCriteria">
+        <tr *ngFor="let p of productList|filterdata:searchCriteria" >
             <td>{{p.id}}</td>
             <td>{{p.name}}</td>
             <td>{{p.price}}</td>
-            <td>{{p.shippingDate|date:'MM/dd/yyyy'}}</td>
-            <td><button class="btn btn-primary" (click)="addToCart(p)">+</button></td>
+            <td>{{p.shippingDate}}</td>
+            <td><button appChangecolor class="btn btn-primary" (click)="addToCart(p)">+</button></td>
             
         </tr>
     </tbody>

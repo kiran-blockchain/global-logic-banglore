@@ -16,9 +16,19 @@
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" *ngFor='let item of details.navItems;'>
+      <!-- <li class="nav-item" *ngFor='let item of details.navItems;'>
         <a class="nav-link" [routerLink]=[item.link]>{{item.name}}</a>
+      </li> -->
+      <li>
+        <a class="nav-link" [routerLink]="['register']">Register</a> 
       </li>
+      <li>
+        <a class="nav-link" [routerLink]="['products']">Products</a> 
+      </li>
+      <li>
+        <a class="nav-link" [routerLink]="['login']">Login</a> 
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="#">{{cart.length}}</a>
       </li>
